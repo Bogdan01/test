@@ -1,0 +1,47 @@
+version: '3.1'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+        - "80:80"
+    volumes:
+        - ./:/code
+        - ./conf/site.conf:/etc/nginx/conf.d/default.conf
+    links:
+        - php
+    networks:
+      - app-network
+  php:
+    image: php:7-fpm
+    volumes:
+       - ./:/code
+    networks:
+       - app-network
+
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: accesses
+      MYSQL_ROOT_PASSWORD: password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

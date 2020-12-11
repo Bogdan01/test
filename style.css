@@ -1,0 +1,231 @@
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: local('Helvetica Neue Roman'), local('Helvetica-Neue-Roman'),
+        url('fonts/HelveticaNeueCyr-Light.woff2') format('woff2'),
+        url('fonts/HelveticaNeueCyr-Light.woff') format('woff'),
+        url('fonts/HelveticaNeueCyr-Light.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue';
+    color: #000;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e5e5e5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes opacity-down {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation-name: opacity-down;
+    animation-duration: 1s;
+    animation-delay: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 0;
+}
+
+@keyframes login-block-flip {
+    from {
+        transform: perspective(495px) rotateX(-30deg);
+        opacity: 0.3;
+    }
+    to {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+}
+
+.login-block {
+    width: 360px;
+    position: relative;
+    filter: drop-shadow(0.419px 5.985px 32.5px rgba(0,0,0,0.22));
+    background-color: #fffc;
+    padding: 38px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-sizing: border-box;
+    animation-name: login-block-flip;
+    animation-timing-function: cubic-bezier(0, 0, 0.72, 1.54);
+    animation-duration: 1s;
+    transform-origin: top;
+    z-index: 2;
+}
+
+@keyframes login-logo-flip {
+    from {
+        transform: perspective(410px) rotateX(90deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.login-logo {
+    width: 98px;
+    height: 98px;
+    position: relative;
+    background-color: #fff;
+    filter: drop-shadow(0.419px 5.985px 12px rgba(0,0,0,0.07));
+    border-radius: 20px;
+    margin: -88px auto 25px;
+    animation-name: login-logo-flip;
+    animation-duration: 1s;
+}
+
+@keyframes logo-element-down {
+    from {
+        transform: perspective(700px) translate3d(0px, -62px, 500px);
+    }
+    to {
+        transform: perspective(700px) translate3d(0px, 0px, 0px);
+    }
+}
+
+.login-logo__square {
+	width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    position: absolute;
+    mix-blend-mode: multiply;
+    animation-name: logo-element-down;
+}
+
+.login-logo__square_orange {
+    background-color: #f8911d;
+    left: 29px;
+    top: 15px;
+    animation-duration: 1s;
+}
+
+.login-logo__square_pink {
+    background-color: #d1369c;
+    left: 40px;
+    top: 27px;
+    animation-duration: 0.7s;
+}
+
+.login-logo__square_blue {
+    background-color: #3e9ffd;
+    left: 29px;
+    top: 40px;
+    animation-duration: 0.5s;
+}
+
+.login-logo__square_green {
+    background-color: #4ebf49;
+    left: 40px;
+    top: 52px;
+    animation-duration: 1s;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 15px;
+    text-align: center;
+    color: #00000080;
+    margin-top: 4px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    position: relative;
+}
+
+.error {
+    font-size: 15px;
+    color: red;
+    position: absolute;
+    top: -24px;
+    opacity: 0;
+}
+
+.error.show {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #636363;
+    margin-bottom: 17px;
+    padding: 8px;
+    font-size: 16px;
+    transition: box-shadow 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid #3e9ffd;
+    transition: box-shadow 0.2s;
+    box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.39) inset;
+}
+
+.checkbox-wrap {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 38px;
+}
+
+.checkbox-wrap input {
+    margin: -3px 9px 0 0;
+}
+
+.button_blue {
+    background-color: #3e9ffd;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button_blue:hover {
+    background-color: #3f82fd;
+    transition: 0.3s;
+}
